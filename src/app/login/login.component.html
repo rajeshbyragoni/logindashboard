@@ -1,0 +1,43 @@
+<div id="LoginForm">
+	<div class="container">
+		<h1 class="form-heading">login Form</h1>
+		<div class="login-form">
+			<div class="main-div">
+				<div class="panel">
+					<h2>Admin Login</h2>
+					<p>Please enter your email and password</p>
+				</div>
+				<form [formGroup]="loginData">
+					<div class="form-group">
+						<input type="text" class="form-control" name="username" placeholder="User name" formControlName="username" #username>
+						<div
+						*ngIf="loginData.controls['username'].invalid && (loginData.controls['username'].dirty ||  loginData.controls['username'].touched)"
+						class="text-danger">
+						<div *ngIf="loginData.controls['username'].errors.required">
+							User Name is required.
+						</div>
+					</div>
+
+				</div>
+
+				<div class="form-group">
+					<input type="password" class="form-control" name="password" placeholder="Password" formControlName="password" #password>
+					<div
+					*ngIf="loginData.controls['password'].invalid && (loginData.controls['password'].dirty ||  loginData.controls['password'].touched)"
+					class="text-danger">
+					<div *ngIf="loginData.controls['password'].errors.required">
+						password is required.
+					</div>
+				</div>
+
+			</div>
+			<div class="forgot">
+				<a href="reset.html">Forgot password?</a>
+			</div>
+			<button type="submit" class="btn btn-primary" [disabled]="loginData.pristine || loginData.invalid" (click)="loginClick(username.value, password.value)">Login</button>
+
+		</form>
+	</div>
+	<p class="botto-text"> Designed by Rajesh Byru</p>
+</div></div></div>
+

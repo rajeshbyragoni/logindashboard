@@ -1,0 +1,94 @@
+<div class="container">
+	
+	<h3>Update Method here</h3>
+	<form [formGroup]="editDataForm">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="company">company</label>
+					<input type="text" class="form-control" name="company" formControlName="company" #company>
+					<div
+					*ngIf="editDataForm.controls['company'].invalid && (editDataForm.controls['company'].dirty ||  editDataForm.controls['company'].touched)"
+					class="text-danger">
+					<div *ngIf="editDataForm.controls['company'].errors.required">
+						company Name is required.
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div class="col-md-3">
+			<div class="form-group">
+				<label for="categories">email</label>
+				<input type="text" class="form-control" name="email" formControlName="email" #email>
+				<div
+					*ngIf="editDataForm.controls['email'].invalid && (editDataForm.controls['email'].dirty ||  editDataForm.controls['email'].touched)"
+					class="text-danger">
+					<div *ngIf="editDataForm.controls['email'].errors.required">
+						email Name is required.
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div class="col-md-3">
+			<div class="form-group">
+				<label for="emp_id">emp_id</label>
+				<input type="text" class="form-control" name="emp_id" formControlName="emp_id" #emp_id>
+				<div
+					*ngIf="editDataForm.controls['emp_id'].invalid && (editDataForm.controls['emp_id'].dirty ||  editDataForm.controls['emp_id'].touched)"
+					class="text-danger">
+					<div *ngIf="editDataForm.controls['emp_id'].errors.required">
+						emp_id text is required.
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div class="col-md-3">
+			<div class="form-group">
+				<label for="location">location</label>
+				<input type="text" class="form-control" name="location" formControlName="location" #location>
+				<div
+					*ngIf="editDataForm.controls['location'].invalid && (editDataForm.controls['location'].dirty ||  editDataForm.controls['location'].touched)"
+					class="text-danger">
+					<div *ngIf="editDataForm.controls['location'].errors.required">
+						location text is required.
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div class="col-md-3">
+			<div class="form-group">
+				<label for="name">name</label>
+				<input type="text" class="form-control" name="name" formControlName="name" #name>
+				<div
+					*ngIf="editDataForm.controls['name'].invalid && (editDataForm.controls['name'].dirty ||  editDataForm.controls['name'].touched)"
+					class="text-danger">
+					<div *ngIf="editDataForm.controls['name'].errors.required">
+						name text is required.
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div class="col-md-3">
+			<div class="form-group">
+				<label for="phone">phone</label>
+				<input type="text" class="form-control" name="phone" formControlName="phone" #phone>
+				<div
+					*ngIf="editDataForm.controls['phone'].invalid && (editDataForm.controls['phone'].dirty ||  editDataForm.controls['phone'].touched)"
+					class="text-danger">
+					<div *ngIf="editDataForm.controls['phone'].errors.required">
+						phone text is required.
+					</div>
+				</div>
+			</div>
+		</div>		
+		<div class="col-md-3">
+			<div class="form-group">
+				<label for="content">&nbsp;</label><br/>
+
+				<button style="width:100%" type="button" class="btn" [disabled]="editDataForm.pristine || editDataForm.invalid" (click)="editClick(company.value, email.value, emp_id.value, location.value, name.value, phone.value)">Submit</button>
+			</div>
+			
+		</div>	
+	</div>
+</form>
+</div>

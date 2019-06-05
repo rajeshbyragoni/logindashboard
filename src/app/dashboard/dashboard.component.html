@@ -1,0 +1,257 @@
+	<a (click)="logOut()">LogOut</a>
+
+	<div class="container">
+		<div class="row">
+			<form [formGroup]="dataForm">
+				<div class="col-md-2">
+					<div class="form-group">
+						<label for="title">company</label>
+						<input type="text" class="form-control" name="company" formControlName="company" #company>
+						<div
+						*ngIf="dataForm.controls['company'].invalid && (dataForm.controls['company'].dirty ||  dataForm.controls['company'].touched)"
+						class="text-danger">
+						<div *ngIf="dataForm.controls['company'].errors.required">
+							company Name is required.
+						</div>
+					</div>
+				</div>
+			</div>	
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="email">email</label>
+					<input type="text" class="form-control" name="email" formControlName="email" #email>
+					<div
+					*ngIf="dataForm.controls['email'].invalid && (dataForm.controls['email'].dirty ||  dataForm.controls['email'].touched)"
+					class="text-danger">
+					<div *ngIf="dataForm.controls['email'].errors.required">
+						email Name is required.
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div class="col-md-1">
+			<div class="form-group">
+				<label for="emp_id">emp_id</label>
+				<input type="text" class="form-control" name="emp_id" formControlName="emp_id" #emp_id>
+				<div
+				*ngIf="dataForm.controls['emp_id'].invalid && (dataForm.controls['emp_id'].dirty ||  dataForm.controls['emp_id'].touched)"
+				class="text-danger">
+				<div *ngIf="dataForm.controls['emp_id'].errors.required">
+					emp_id Name is required.
+				</div>
+			</div>
+		</div>
+	</div>	
+	<!-- <div class="col-md-1">
+		<div class="form-group">
+			<label for="id">id</label>
+			<input type="text" class="form-control" name="id" formControlName="id" #id>
+			<div
+			*ngIf="dataForm.controls['id'].invalid && (dataForm.controls['id'].dirty ||  dataForm.controls['id'].touched)"
+			class="text-danger">
+			<div *ngIf="dataForm.controls['id'].errors.required">
+				id Name is required.
+			</div>
+		</div>
+	</div>
+</div> -->
+<div class="col-md-2">
+	<div class="form-group">
+		<label for="location">location</label>
+		<input type="text" class="form-control" name="location" formControlName="location" #location>
+		<div *ngIf="dataForm.controls['location'].invalid && (dataForm.controls['location'].dirty ||  dataForm.controls['location'].touched)"
+		class="text-danger">
+		<div *ngIf="dataForm.controls['location'].errors.required">
+			location Name is required.
+		</div>
+	</div>
+</div>
+</div>
+<div class="col-md-1">
+	<div class="form-group">
+		<label for="name">name</label>
+		<input type="text" class="form-control" name="name" formControlName="name" #name>
+		<div
+		*ngIf="dataForm.controls['name'].invalid && (dataForm.controls['name'].dirty ||  dataForm.controls['name'].touched)"
+		class="text-danger">
+		<div *ngIf="dataForm.controls['name'].errors.required">
+			name Name is required.
+		</div>
+	</div>
+</div>
+</div>
+<div class="col-md-1">
+	<div class="form-group">
+		<label for="phone">phone</label>
+		<input type="text" class="form-control" name="phone" formControlName="phone" #phone>
+		<div
+		*ngIf="dataForm.controls['phone'].invalid && (dataForm.controls['phone'].dirty ||  dataForm.controls['phone'].touched)"
+		class="text-danger">
+		<div *ngIf="dataForm.controls['phone'].errors.required">
+			phone Name is required.
+		</div>
+	</div>
+</div>
+</div>
+<div class="col-md-3">
+	<div class="form-group">
+		<label for="content">&nbsp;</label><br/>
+
+		<button style="width:100%" type="button" class="btn" [disabled]="dataForm.pristine || dataForm.invalid" (click)="dataClick(company.value, email.value, emp_id.value, location.value, name.value, phone.value)">Submit</button>
+
+	</div>
+</div>
+</form>
+</div>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>company</th>
+			<th>created_at</th>
+			<th>email</th>
+			<th>emp_id</th>
+			<th>id</th>
+			<th>location</th>
+			<th>name</th>
+			<th>phone</th>
+			<th>updated_at</th>
+			<th>Actin</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let list of fullData">
+			<td>{{list.company}}</td>
+			<td>{{list.created_at}}</td>
+			<td>{{list.email}}</td>
+			<td>{{list.emp_id}}</td>
+			<td>{{list.id}}</td>
+			<td>{{list.location}}</td>
+			<td>{{list.name}}</td>
+			<td>{{list.phone}}</td>
+			<td>{{list.updated_at}}</td>
+
+			<td>
+
+				<a [routerLink]="['/edit']" [queryParams]="{id : list.id}">Edit</a>
+				<button (click)="deleteClick(list.id)"  class="pull-right btn btn-default" id="k{{list.id}}">Delete <i id="{{list.id}}" class="fa fa-spinner fa-spin" style="display: none;"></i></button>	
+			</td>
+		</tr>
+
+	</tbody>
+</table>
+</div>
+
+
+<!-- <div class="container">
+
+	<h3>Get Method here</h3>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>title</th>
+				<th>categories</th>
+				<th>content</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor = "let item of fullData;  index as i">
+				<td>{{i+1}}</td>
+				<td>{{item.title}}</td>
+				<td>{{item.categories}}</td>
+				<td>{{item.content}}</td>
+				
+				
+				
+			</tr>
+
+		</tbody>
+	</table>
+
+	
+		<h3>post Method here</h3>
+<form [formGroup]="dataForm">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="title">title</label>
+					<input type="text" class="form-control" name="title" formControlName="title" #title>
+					<div
+					*ngIf="dataForm.controls['title'].invalid && (dataForm.controls['title'].dirty ||  dataForm.controls['title'].touched)"
+					class="text-danger">
+					<div *ngIf="dataForm.controls['title'].errors.required">
+						title Name is required.
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div class="col-md-3">
+			<div class="form-group">
+				<label for="categories">categories</label>
+				<input type="text" class="form-control" name="categories" formControlName="categories" #categories>
+				<div
+				*ngIf="dataForm.controls['categories'].invalid && (dataForm.controls['categories'].dirty ||  dataForm.controls['categories'].touched)"
+				class="text-danger">
+				<div *ngIf="dataForm.controls['categories'].errors.required">
+					categories Name is required.
+				</div>
+			</div>
+		</div>
+	</div>	
+	<div class="col-md-3">
+		<div class="form-group">
+			<label for="content">content</label>
+			<input type="text" class="form-control" name="content" formControlName="content" #content>
+			<div
+			*ngIf="dataForm.controls['content'].invalid && (dataForm.controls['content'].dirty ||  dataForm.controls['content'].touched)"
+			class="text-danger">
+			<div *ngIf="dataForm.controls['content'].errors.required">
+				content text is required.
+			</div>
+		</div>
+	</div>
+</div>		
+<div class="col-md-3">
+	<div class="form-group">
+		<label for="content">&nbsp;</label><br/>
+
+		<button style="width:100%" type="button" class="btn" [disabled]="dataForm.pristine || dataForm.invalid" (click)="dataClick(title.value, categories.value, content.value)">Submit</button>
+	</div>
+
+</div>	
+</div>
+</form>
+
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>title</th>
+				<th>categories</th>
+				<th>content</th>
+				<th>Actin</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor = "let item of fullData;  index as i">
+				<td>{{i+1}}</td>
+				<td>{{item.title}}</td>
+				<td>{{item.categories}}</td>
+				<td>{{item.content}}</td>
+				<td>
+				<a [routerLink]="['/edit']" [queryParams]="{id : item.id}">Edit</a>
+
+				<button (click)="deleteClick(item.id)"  class="pull-right btn btn-default" id="k{{item.id}}">Delete <i id="{{item.id}}" class="fa fa-spinner fa-spin" style="display: none;"></i></button>	
+				</td>
+				
+				
+				
+			</tr>
+
+		</tbody>
+	</table>
+
+	
+
+
+</div> -->
